@@ -19,13 +19,12 @@ Vagrant.configure("2") do |config|
     #end
 
     ubuntu.vm.synced_folder ".", "/vagrant", type: "rsync", disabled: false, rsync__verbose: true
+	ubuntu.vm.synced_folder "host-share", "/media/host-share", type: "rsync" disabled: false, rsync__verbose: true
 
     ubuntu.vm.provision "ansible_local" do |ansible|
 		ansible.playbook = "playbook.yml"
 		ansible.galaxy_role_file = "requirements.yml"
 	end
-
-	ubuntu.vm.synced_folder "host-share", "/media/host-share"
 
 	ubuntu.vm.provider "virtualbox" do |vb|
 		vb.customize ["modifyvm", :id, "--memory", "4096"]
