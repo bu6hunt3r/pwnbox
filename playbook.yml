@@ -28,6 +28,7 @@
       shell: '. {{ bash_rc }}'
 
   roles:
+    - binaryninja
     - angr
     - keystone
     - pwndbg
