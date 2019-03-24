@@ -1,10 +1,11 @@
 ---
 - name: Install angr dependencies
-  apt: "pkg={{ item }} state=present"
-  with_items:
-  - python-dev
-  - libffi-dev
-  - build-essential
+  apt:
+    apt:
+      - python-dev
+      - libffi-dev
+      - build-essential
+    state: present
   become: yes
 
 - name: get angr

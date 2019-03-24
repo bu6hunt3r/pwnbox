@@ -1,0 +1,10 @@
+---
+- name: Install r2dbg dependencies
+  pip:
+    name: r2pipe
+  become: yes
+
+- name: Install r2dbg
+  pip:
+    name: r2dbg
+  become: yes

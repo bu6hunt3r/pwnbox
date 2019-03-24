@@ -10,3 +10,4 @@ bash_rc: '{{ home_dir }}.bashrc'
 # relative to VagrantFile
 local_share_dir: host-share
 vagrant_share_dir: '/media/{{ local_share_dir }}/'
+binja_dir: '/media/host-share'

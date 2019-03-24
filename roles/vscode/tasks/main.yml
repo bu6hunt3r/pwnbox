@@ -22,9 +22,9 @@
   become: yes
 
 
-- name: Pylint for vscode
-  pip:
-    name: pylint
+#- name: Pylint for vscode
+#  pip:
+#    name: pylint
 
 - name: Installing vscode extensions
   shell: code --install-extension {{ item }}

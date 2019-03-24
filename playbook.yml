@@ -7,10 +7,12 @@
       become: yes
 
     - name: Ansible requirements
-      apt: "pkg={{ item }} state=present"
-      with_items:
-      - git
-      - python-pip
+      apt:
+        pkg:
+          - git
+          - python-pip
+          - python3-pip
+        state: present
       become: yes
     
     - name: Make tools and bin dir
@@ -28,6 +30,7 @@
       shell: '. {{ bash_rc }}'
 
   roles:
+    - 010editor
     - binaryninja
     - angr
     - keystone
@@ -35,8 +38,10 @@
     - pwntools
     - ctfrun
     - qemu-multiarch
-    - nephelaiio.tmux
-
+    - ghidra
+    - r2dbg
+    #- nephelaiio.tmux
+    - vscode
   tasks:
     - name: get radare2
       git:
@@ -50,9 +55,10 @@
         creates: '/usr/bin/radare2'
 
     - name: Install Ruby
-      apt: "pkg={{ item }} state=present"
-      with_items:
-      - ruby
+      apt: 
+        pkg:
+          - ruby
+        state: present
       become: yes
 
     - name: Install onegadget
@@ -70,21 +76,23 @@
       become: yes
 
     - name: multilib
-      apt: "pkg={{ item }} state=present"
-      with_items:
-      - libc6:i386
-      - libncurses5:i386
-      - libstdc++6:i386
+      apt:
+        pkg:
+          - libc6:i386
+          - libncurses5:i386
+          - libstdc++6:i386
+        state: present
       become: yes
 
     - name: Installing default tools
-      apt: "pkg={{ item }} state=present"
-      with_items:
-      - tmux
-      - vim
-      - gdb
-      - gdb-multiarch
-      - unzip
+      apt:
+        pkg:
+          - tmux
+          - vim
+          - gdb
+          - gdb-multiarch
+          - unzip
+        state: present
       become: yes
 
 

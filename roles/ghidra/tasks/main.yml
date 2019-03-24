@@ -1,0 +1,10 @@
+---
+- name: Get Ghidra
+  unarchive:
+    src: "https://ghidra-sre.org/ghidra_9.0_PUBLIC_20190228.zip"
+    dest: /home/vagrant/
+    remote_src: yes
+    creates: "/home/vagrant/ghidra_9.0"
+
+- name: Patch Ghidra launcher
+  shell: sed -i "/address=\*/s/\*/127\.0\.0\.1/;" /home/vagrant/ghidra_9.0/support/launch.sh
